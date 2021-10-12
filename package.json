@@ -1,0 +1,39 @@
+{
+  "name": "@solidity-utilities/library-mapping-address",
+  "version": "0.0.1",
+  "description": "Solidity library for mapping addresses",
+  "main": "null",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "compile": "truffle compile",
+    "ganache-cli": "ganache-cli",
+    "soldocgen": "soldocgen --output gitbook --ignore Migrations.sol docs/ contracts/",
+    "test": "truffle test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/solidity-utilities/library-mapping-address.git"
+  },
+  "keywords": [
+    "address",
+    "ethereum",
+    "library",
+    "mapping",
+    "solidity",
+    "truffle"
+  ],
+  "author": "S0AndS0",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/solidity-utilities/library-mapping-address/issues"
+  },
+  "homepage": "https://github.com/solidity-utilities/library-mapping-address#readme",
+  "devDependencies": {
+    "@truffle/hdwallet-provider": "^1.5.1",
+    "ganache-cli": "^6.12.2",
+    "soldocgen": "^0.0.3",
+    "truffle": "^5.1.65"
+  }
+}

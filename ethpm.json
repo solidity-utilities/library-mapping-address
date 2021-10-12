@@ -1,0 +1,17 @@
+{
+  "package_name": "library-mapping-address",
+  "version": "0.0.1",
+  "description": "Solidity library for mapping addresses",
+  "authors": ["S0AndS0 <https://github.com/S0AndS0>"],
+  "keywords": [
+    "address",
+    "ethereum",
+    "library",
+    "mapping",
+    "solidity",
+    "truffle"
+  ],
+  "license": "AGPL-3.0",
+  "manifest": "ethpm/3",
+  "dependencies": {}
+}
