@@ -3,6 +3,11 @@
   "version": "0.0.1",
   "description": "Solidity library for mapping addresses",
   "authors": ["S0AndS0 <https://github.com/S0AndS0>"],
+  "links": {
+    "website": "https://solidity-utilities.github.io/library-mapping-address/",
+    "documentation": "https://github.com/solidity-utilities/library-mapping-address#readme",
+    "repository": "https://github.com/solidity-utilities/library-mapping-address"
+  },
   "keywords": [
     "address",
     "ethereum",
