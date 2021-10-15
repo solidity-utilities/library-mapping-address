@@ -12,7 +12,7 @@ library LibraryMappingAddress {
     /// @return **{address}** Value for given key `address`
     /// @custom:throws **{Error}** `"LibraryMappingAddress.get: value not defined"`
     function get(mapping(address => address) storage _self, address _key)
-        public
+        external
         view
         returns (address)
     {
@@ -33,7 +33,7 @@ library LibraryMappingAddress {
         mapping(address => address) storage _self,
         address _key,
         address _default
-    ) public view returns (address) {
+    ) external view returns (address) {
         address _value = _self[_key];
         return _value != address(0x0) ? _value : _default;
     }
@@ -59,7 +59,7 @@ library LibraryMappingAddress {
     /// @param _key **{address}** Mapping key to check if value `address` is defined
     /// @return **{bool}** true if value `address` is defined, or `false` if _undefined_
     function has(mapping(address => address) storage _self, address _key)
-        public
+        external
         view
         returns (bool)
     {
@@ -108,7 +108,7 @@ library LibraryMappingAddress {
     /// @return **{address}** Stored value `address` for given key `address`
     /// @custom:throws **{Error}** `"LibraryMappingAddress.remove: value not defined"`
     function remove(mapping(address => address) storage _self, address _key)
-        public
+        external
         returns (address)
     {
         return
@@ -146,7 +146,7 @@ library LibraryMappingAddress {
         mapping(address => address) storage _self,
         address _key,
         address _value
-    ) public {
+    ) external {
         setOrError(
             _self,
             _key,
