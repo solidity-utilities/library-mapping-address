@@ -27,6 +27,8 @@ Solidity library for mapping addresses
     - [Method `getOrElse`][heading__method_getorelse]
     - [Method `getOrError`][heading__method_getorerror]
     - [Method `has`][heading__method_has]
+    - [Method `overwrite`][heading__method_overwrite]
+    - [Method `overwriteOrError`][heading__method_overwriteorerror]
     - [Method `remove`][heading__method_remove]
     - [Method `removeOrError`][heading__method_removeorerror]
     - [Method `set`][heading__method_set]
@@ -435,6 +437,67 @@ ______
 
 
 **Returns** -> **{bool}** `true` if value `address` is defined, or `false` if _undefined_
+
+
+---
+
+
+#### Method `overwrite`
+[heading__method_overwrite]:
+  #method-overwrite
+  "Store `_value` under given `_key` **without** preventing unintentional overwrites"
+
+
+> Store `_value` under given `_key` **without** preventing unintentional overwrites
+
+
+[**Source**][source__contracts__librarymappingaddress_sol__overwrite] `overwrite(mapping(address => address) _self, address _key, address _value)`
+
+
+**Parameters**
+
+
+- `_self` **{mapping(address => address)}** Mapping of key/value `address` pairs
+
+- `_key` **{address}** Mapping key to set corresponding value `address` for
+
+- `_value` **{address}** Mapping value to set
+
+
+**Throws** ->  **{Error}** `"LibraryMappingAddress.overwrite: value cannot be 0x0"`
+
+
+**Developer note** -> Passes parameters to `overwriteOrError` with default Error `_reason` to throw
+
+
+---
+
+
+#### Method `overwriteOrError`
+[heading__method_overwriteorerror]:
+  #method-overwriteorerror
+  "Store `_value` under given `_key` **without** preventing unintentional overwrites"
+
+
+> Store `_value` under given `_key` **without** preventing unintentional overwrites
+
+
+[**Source**][source__contracts__librarymappingaddress_sol__overwriteorerror] `overwriteOrError(mapping(address => address) _self, address _key, address _value, string _reason)`
+
+
+**Parameters**
+
+
+- `_self` **{mapping(address => address)}** Mapping of key/value `address` pairs
+
+- `_key` **{address}** Mapping key to set corresponding value `address` for
+
+- `_value` **{address}** Mapping value to set
+
+- `_reason` **{string}** Custom error message to present if value `address` is `0x0`
+
+
+**Throws** -> **{Error}** `_reason` if value is `0x0`
 
 
 ---
@@ -849,19 +912,27 @@ For further details review full length version of [AGPL-3.0][branch__current__li
   contracts/LibraryMappingAddress.sol#L57
   "Solidity code for LibraryMappingAddress.has function"
 
-[source__contracts__librarymappingaddress_sol__remove]:
+[source__contracts__librarymappingaddress_sol__overwrite]:
   contracts/LibraryMappingAddress.sol#L69
+  "Solidity code for LibraryMappingAddress.overwrite function"
+
+[source__contracts__librarymappingaddress_sol__overwriteorerror]:
+  contracts/LibraryMappingAddress.sol#L88
+  "Solidity code for LibraryMappingAddress.overwriteOrError function"
+
+[source__contracts__librarymappingaddress_sol__remove]:
+  contracts/LibraryMappingAddress.sol#L104
   "Solidity code for LibraryMappingAddress.remove function"
 
 [source__contracts__librarymappingaddress_sol__removeorerror]:
-  contracts/LibraryMappingAddress.sol#L87
+  contracts/LibraryMappingAddress.sol#L122
   "Solidity code for LibraryMappingAddress.removeOrError function"
 
 [source__contracts__librarymappingaddress_sol__set]:
-  contracts/LibraryMappingAddress.sol#L104
+  contracts/LibraryMappingAddress.sol#L139
   "Solidity code for LibraryMappingAddress.set function"
 
 [source__contracts__librarymappingaddress_sol__setorerror]:
-  contracts/LibraryMappingAddress.sol#L123
+  contracts/LibraryMappingAddress.sol#L158
   "Solidity code for LibraryMappingAddress.setOrError function"
 
