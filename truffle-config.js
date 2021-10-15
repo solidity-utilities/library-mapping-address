@@ -36,6 +36,7 @@
  * }
  * ```
  */
+const infura_project_id = "452033b0e1a041c9ad40d9690a512225";
 const fs = require("fs");
 const os = require("os");
 const path = require("path");
@@ -91,15 +92,19 @@ module.exports = {
         if (!ethpm) {
           throw new Error("Empty 'ethpm' file?");
         }
+        if (!infura_project_id) {
+          throw new Error("Project ID is required");
+        }
+        const valid_keys = ["mnemonic", "private_key", "private_keys"];
         const auth_pair = Object.entries(ethpm).find(([key, value]) => {
-          return ["mnemonic", "private_key", "private_keys"].includes(key);
+          return valid_keys.includes(key);
         });
         if (!auth_pair || !auth_pair[1]) {
           throw new Error("Cannot find authentication within 'ethpm' file");
         }
         return new HDWalletProvider(
           auth_pair[1],
-          `https://ropsten.infura.io/v3/YOUR-PROJECT-ID`
+          `https://ropsten.infura.io/v3/${infura_project_id}`
         );
       },
       network_id: 3, // Ropsten's id
