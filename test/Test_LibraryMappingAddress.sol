@@ -67,6 +67,44 @@ contract Test_LibraryMappingAddress {
     }
 
     ///
+    function test_overwrite() public {
+        data.set(_key, _value);
+        address _got = data.get(_key);
+        Assert.equal(_got, _value, "Failed to get expected value");
+        data.overwrite(_key, _default_value);
+        address _got = data.get(_key);
+        Assert.equal(_got, _default_value, "Failed to get expected value");
+    }
+
+    ///
+    function test_overwrite_error() public {
+        try data.overwrite(_key, address(0x0)) {
+            Assert.isTrue(false, "Failed to catch error");
+        } catch Error(string memory _reason) {
+            Assert.equal(
+                _reason,
+                "LibraryMappingAddress.overwrite: value cannot be 0x0",
+                "Caught unexpected error reason"
+            );
+        }
+    }
+
+    ///
+    function test_overwriteOrError() public {
+        string
+            memory _custom_reason = "test_overwriteOrError: customized error";
+        try data.overwriteOrError(_key, address(0x0), _custom_reason) {
+            Assert.isTrue(false, "Failed to catch error");
+        } catch Error(string memory _reason) {
+            Assert.equal(
+                _reason,
+                _custom_reason,
+                "Caught unexpected error reason"
+            );
+        }
+    }
+
+    ///
     function test_remove_error() public {
         try data.remove(_key) returns (address _result) {
             Assert.equal(_result, _key, "Failed to catch error");

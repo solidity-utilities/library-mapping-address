@@ -66,6 +66,41 @@ library LibraryMappingAddress {
         return _self[_key] != address(0x0);
     }
 
+    /// @notice Store `_value` under given `_key` **without** preventing unintentional overwrites
+    /// @dev Passes parameters to `overwriteOrError` with default Error `_reason` to throw
+    /// @param _self **{mapping(address => address)}** Mapping of key/value `address` pairs
+    /// @param _key **{address}** Mapping key to set corresponding value `address` for
+    /// @param _value **{address}** Mapping value to set
+    /// @custom:throws **{Error}** `"LibraryMappingAddress.overwrite: value cannot be 0x0"`
+    function overwrite(
+        mapping(address => address) storage _self,
+        address _key,
+        address _value
+    ) external {
+        overwriteOrError(
+            _self,
+            _key,
+            _value,
+            "LibraryMappingAddress.overwrite: value cannot be 0x0"
+        );
+    }
+
+    /// @notice Store `_value` under given `_key` **without** preventing unintentional overwrites
+    /// @param _self **{mapping(address => address)}** Mapping of key/value `address` pairs
+    /// @param _key **{address}** Mapping key to set corresponding value `address` for
+    /// @param _value **{address}** Mapping value to set
+    /// @param _reason **{string}** Custom error message to present if value `address` is `0x0`
+    /// @custom:throws **{Error}** `_reason` if value is `0x0`
+    function overwriteOrError(
+        mapping(address => address) storage _self,
+        address _key,
+        address _value,
+        string memory _reason
+    ) public {
+        require(_value != address(0x0), _reason);
+        _self[_key] = _value;
+    }
+
     /// @notice Delete value `address` for given `_key`
     /// @dev Passes parameters to `removeOrError` with default Error `_reason` to throw
     /// @param _self **{mapping(address => address)}** Mapping of key/value `address` pairs
