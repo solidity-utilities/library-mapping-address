@@ -142,7 +142,7 @@ module.exports = {
           //     "userdoc",
           //   ],
           // },
-          "contracts/MappedAddresses.sol": {
+          "contracts/LibraryMappingAddress.sol": {
             "*": ["devdoc", "userdoc"],
           },
         },
