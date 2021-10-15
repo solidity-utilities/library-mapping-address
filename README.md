@@ -97,7 +97,7 @@ Solidity contracts may then import code via similar syntax as shown
 ```Solidity
 import {
     LibraryMappingAddress
-} from "@solidity-utilities/library-mapping-address/contracts/LibraryMappingAddress.sol"
+} from "@solidity-utilities/library-mapping-address/contracts/LibraryMappingAddress.sol";
 ```
 
 
