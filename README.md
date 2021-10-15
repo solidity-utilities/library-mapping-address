@@ -111,6 +111,28 @@ Review the [Truffle -- Package Management via NPM][truffle__package_management_v
 ---
 
 
+Alternatively this library may be installed via Truffle, eg...
+
+
+```Bash
+cd your_project
+
+truffle install library-mapping-address
+```
+
+... However, if utilizing Truffle for dependency management Solidity contracts must import code via a slightly different path
+
+
+```Solidity
+import {
+    LibraryMappingAddress
+} from "library-mapping-address/contracts/LibraryMappingAddress.sol";
+```
+
+
+---
+
+
 > In the future, after beta testers have reported bugs and feature requests, it
 > should be possible to link the deployed `LibraryMappingAddress` via Truffle
 > migration similar to the following.
