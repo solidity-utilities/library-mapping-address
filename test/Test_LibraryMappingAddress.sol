@@ -43,17 +43,13 @@ contract Test_LibraryMappingAddress {
 
     ///
     function test_getOrError() public {
-        try
-            data.getOrError(
-                _key,
-                "Test_LibraryMappingAddress.test_getOrError: value not defined"
-            )
-        returns (address _result) {
+        string memory _custom_reason = "test_getOrError: customized error";
+        try data.getOrError(_key, _custom_reason) returns (address _result) {
             Assert.equal(_result, _key, "Failed to catch error");
         } catch Error(string memory _reason) {
             Assert.equal(
                 _reason,
-                "Test_LibraryMappingAddress.test_getOrError: value not defined",
+                _custom_reason,
                 "Caught unexpected error reason"
             );
         }
@@ -119,17 +115,13 @@ contract Test_LibraryMappingAddress {
 
     ///
     function test_removeOrError() public {
-        try
-            data.removeOrError(
-                _key,
-                "Test_LibraryMappingAddress.test_removeOrError: value not defined"
-            )
-        returns (address _result) {
+        string memory _custom_reason = "test_removeOrError: customized error";
+        try data.removeOrError(_key, _custom_reason) returns (address _result) {
             Assert.equal(_result, _key, "Failed to catch error");
         } catch Error(string memory _reason) {
             Assert.equal(
                 _reason,
-                "Test_LibraryMappingAddress.test_removeOrError: value not defined",
+                _custom_reason,
                 "Caught unexpected error reason"
             );
         }
@@ -160,19 +152,14 @@ contract Test_LibraryMappingAddress {
 
     ///
     function test_setOrError() public {
+        string memory _custom_reason = "test_setOrError: customized error";
         data.set(_key, _value);
-        try
-            data.setOrError(
-                _key,
-                _value,
-                "Test_LibraryMappingAddress.test_setOrError: value already defined"
-            )
-        {
+        try data.setOrError(_key, _value, _custom_reason) {
             Assert.isTrue(false, "Failed to catch expected error");
         } catch Error(string memory _reason) {
             Assert.equal(
                 _reason,
-                "Test_LibraryMappingAddress.test_setOrError: value already defined",
+                _custom_reason,
                 "Caught unexpected error reason"
             );
         }
