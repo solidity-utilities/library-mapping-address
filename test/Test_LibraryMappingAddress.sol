@@ -68,8 +68,8 @@ contract Test_LibraryMappingAddress {
         address _got = data.get(_key);
         Assert.equal(_got, _value, "Failed to get expected value");
         data.overwrite(_key, _default_value);
-        address _got = data.get(_key);
-        Assert.equal(_got, _default_value, "Failed to get expected value");
+        address _new_got = data.get(_key);
+        Assert.equal(_new_got, _default_value, "Failed to get expected value");
     }
 
     ///
