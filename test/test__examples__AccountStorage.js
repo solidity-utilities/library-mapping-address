@@ -1,6 +1,5 @@
 "use strict";
 
-const LibraryMappingAddress = artifacts.require("LibraryMappingAddress");
 const Account = artifacts.require("Account");
 const AccountStorage = artifacts.require("AccountStorage");
 
