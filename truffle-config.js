@@ -39,11 +39,16 @@
 const fs = require("fs");
 const os = require("os");
 const path = require("path");
-const HDWalletProvider = require("@truffle/hdwallet-provider");
 const ethpm_file = `${path.join(os.homedir(), ".ethpm.json")}`;
 let ethpm;
+let HDWalletProvider;
 if (fs.existsSync(ethpm_file)) {
-  ethpm = require(`${path.join(os.homedir(), ".ethpm.json")}`);
+  try {
+    HDWalletProvider = require("@truffle/hdwallet-provider");
+    ethpm = require(`${path.join(os.homedir(), ".ethpm.json")}`);
+  } catch (error) {
+    console.warn('Warning: ignored ->', error.message);
+  }
 }
 
 //
