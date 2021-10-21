@@ -55,6 +55,7 @@ branches:
 ##   all dependencies are installed, and that there are no sync
 ##   bugs between `package.json` and `package-lock.json` files.
 before_install:
+  - npm set-script prepare ''
   - npm update
 install:
   - npm ci
