@@ -7,7 +7,7 @@
 Solidity library for mapping addresses
 
 
-## [![Byte size of Library Mapping Address][badge__main__library_mapping_address__source_code]][library_mapping_address__main__source_code] [![Open Issues][badge__issues__library_mapping_address]][issues__library_mapping_address] [![Open Pull Requests][badge__pull_requests__library_mapping_address]][pull_requests__library_mapping_address] [![Latest commits][badge__commits__library_mapping_address__main]][commits__library_mapping_address__main] [![Build Status][badge_travis_ci]][build_travis_ci]
+## [![Byte size of Library Mapping Address][badge__main__library_mapping_address__source_code]][library_mapping_address__main__source_code] [![Open Issues][badge__issues__library_mapping_address]][issues__library_mapping_address] [![Open Pull Requests][badge__pull_requests__library_mapping_address]][pull_requests__library_mapping_address] [![Latest commits][badge__commits__library_mapping_address__main]][commits__library_mapping_address__main]  [![Build Status][badge__github_actions]][activity_log__github_actions]
 
 
 ---
@@ -58,7 +58,8 @@ Solidity library for mapping addresses
 > Prerequisites and/or dependencies that this project needs to function properly
 
 
-This project utilizes Truffle for organization of source code and tests, thus it is recommended to install Truffle _globally_ to your current user account
+This project utilizes Truffle for organization of source code and tests, thus
+it is recommended to install Truffle _globally_ to your current user account
 
 
 ```Bash
@@ -107,7 +108,9 @@ import {
 > path) which causes Truffle to search the `node_modules` sub-directories
 
 
-Review the [Truffle -- Package Management via NPM][truffle__package_management_via_npm] documentation for more installation details.
+Review the
+[Truffle -- Package Management via NPM][truffle__package_management_via_npm]
+documentation for more installation details.
 
 
 ---
@@ -122,7 +125,8 @@ cd your_project
 truffle install library-mapping-address
 ```
 
-... However, if utilizing Truffle for dependency management Solidity contracts must import code via a slightly different path
+... However, if utilizing Truffle for dependency management Solidity contracts
+must import code via a slightly different path
 
 
 ```Solidity
@@ -283,10 +287,14 @@ Above the `AccountStorage` contract;
 
 - restricts mutation to owner only
 
-- converts between references (address) and references from/to `Accunt`
+- converts between references (address) and references from/to `Account`
 
 
-There is likely much that can be accomplished by leveraging these abstractions, check the [API][heading__api] section for full set of features available. And review the [`test/test__examples__AccountStorage.js`][source__test__test__examples__accountstorage_js] file for inspiration on how to use this library within projects.
+There is likely much that can be accomplished by leveraging these abstractions,
+check the [API][heading__api] section for full set of features available.  And
+review the
+[`test/test__examples__AccountStorage.js`][source__test__test__examples__accountstorage_js]
+file for inspiration on how to use this library within projects.
 
 
 ______
@@ -301,7 +309,8 @@ ______
 > Application Programming Interfaces for Solidity smart contracts
 
 
-**Developer note** -> Check the [`test/`][source__test] directory for JavaScript and Solidity usage examples
+**Developer note** -> Check the [`test/`][source__test] directory for
+JavaScript and Solidity usage examples
 
 
 ---
@@ -351,7 +360,8 @@ ______
 **Throws** -> **{Error}** `"LibraryMappingAddress.get: value not defined"`
 
 
-> **Developer note** -> Passes parameters to `getOrError` with default Error `_reason` to throw
+**Developer note** -> Passes parameters to `getOrError` with default Error
+`_reason` to throw
 
 
 ---
@@ -467,7 +477,8 @@ ______
 **Throws** ->  **{Error}** `"LibraryMappingAddress.overwrite: value cannot be 0x0"`
 
 
-**Developer note** -> Passes parameters to `overwriteOrError` with default Error `_reason` to throw
+**Developer note** -> Passes parameters to `overwriteOrError` with default
+Error `_reason` to throw
 
 
 ---
@@ -529,7 +540,8 @@ ______
 **Throws** -> **{Error}** `"LibraryMappingAddress.remove: value not defined"`
 
 
-**Developer note** -> Passes parameters to `removeOrError` with default Error `_reason` to throw
+**Developer note** -> Passes parameters to `removeOrError` with default Error
+`_reason` to throw
 
 
 ---
@@ -591,7 +603,8 @@ ______
 **Throws** -> **{Error}** `"LibraryMappingAddress.set: value already defined"`
 
 
-**Developer note** -> Passes parameters to `setOrError` with default Error `_reason` to throw
+**Developer note** -> Passes parameters to `setOrError` with default Error
+`_reason` to throw
 
 
 ---
@@ -636,13 +649,16 @@ ______
 > Additional things to keep in mind when developing
 
 
-Solidity libraries provide methods for a given type **only** for the `contract` that is _`using`_ the library, review the [Usage][heading__usage] example for details on how to _forward_ library features to external consumers.
+Solidity libraries provide methods for a given type **only** for the `contract`
+that is _`using`_ the library, review the [Usage][heading__usage] example for
+details on how to _forward_ library features to external consumers.
 
 
 ---
 
 
-This repository may not be feature complete and/or fully functional, Pull Requests that add features or fix bugs are certainly welcomed.
+This repository may not be feature complete and/or fully functional, Pull
+Requests that add features or fix bugs are certainly welcomed.
 
 
 ______
@@ -669,7 +685,8 @@ Options for contributing to library-mapping-address and solidity-utilities
 > Tips for forking `library-mapping-address`
 
 
-Make a [Fork][library_mapping_address__fork_it] of this repository to an account that you have write permissions for.
+Make a [Fork][library_mapping_address__fork_it] of this repository to an
+account that you have write permissions for.
 
 
 - Clone fork URL. The URL syntax is _`git@github.com:<NAME>/<REPO>.git`_, then add this repository as a remote...
@@ -725,7 +742,10 @@ git push fork main
 - Then on GitHub submit a Pull Request through the Web-UI, the URL syntax is _`https://github.com/<NAME>/<REPO>/pull/new/<BRANCH>`_
 
 
-> Note; to decrease the chances of your Pull Request needing modifications before being accepted, please check the [dot-github](https://github.com/solidity-utilities/.github) repository for detailed contributing guidelines.
+> Note; to decrease the chances of your Pull Request needing modifications
+> before being accepted, please check the
+> [dot-github](https://github.com/solidity-utilities/.github) repository for
+> detailed contributing guidelines.
 
 
 ---
@@ -734,16 +754,19 @@ git push fork main
 ### Sponsor
   [heading__sponsor]:
   #sponsor
-  "&#x1F4B1; Methods for financially supporting solidity-utilities that maintains library-mapping-address"
+  "&#x1F4B1; Methods for financially supporting `solidity-utilities` that maintains `library-mapping-address`"
 
 
-> Methods for financially supporting solidity-utilities that maintains library-mapping-address
+> Methods for financially supporting `solidity-utilities` that maintains
+> `library-mapping-address`
 
 
 Thanks for even considering it!
 
 
-Via Liberapay you may <sub>[![sponsor__shields_io__liberapay]][sponsor__link__liberapay]</sub> on a repeating basis.
+Via Liberapay you may
+<sub>[![sponsor__shields_io__liberapay]][sponsor__link__liberapay]</sub> on a
+repeating basis.
 
 
 For non-repeating contributions Ethereum is accepted via the following public address;
@@ -752,7 +775,10 @@ For non-repeating contributions Ethereum is accepted via the following public ad
     0x5F3567160FF38edD5F32235812503CA179eaCbca
 
 
-Regardless of if you're able to financially support projects such as library-mapping-address that solidity-utilities maintains, please consider sharing projects that are useful with others, because one of the goals of maintaining Open Source repositories is to provide value to the community.
+Regardless of if you're able to financially support projects such as
+`library-mapping-address` that `solidity-utilities` maintains, please consider
+sharing projects that are useful with others, because one of the goals of
+maintaining Open Source repositories is to provide value to the community.
 
 
 ______
@@ -768,6 +794,8 @@ ______
 
 
 - [GitHub -- `github-utilities/make-readme`](https://github.com/github-utilities/make-readme)
+
+- [Husky Docs](https://typicode.github.io/husky/#/)
 
 - [NPM -- Creating and Publishing an Organization Scoped Package](https://docs.npmjs.com/creating-and-publishing-an-organization-scoped-package)
 
@@ -816,7 +844,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ```
 
 
-For further details review full length version of [AGPL-3.0][branch__current__license] License.
+For further details review full length version of
+[AGPL-3.0][branch__current__license] License.
 
 
 
@@ -872,11 +901,11 @@ For further details review full length version of [AGPL-3.0][branch__current__li
   "&#x1F4B1; Sponsor developments and projects that solidity-utilities maintains via Liberapay"
 
 
-[badge_travis_ci]:
-  https://travis-ci.com/solidity-utilities/library-mapping-address.svg?branch=main
+[badge__github_actions]:
+  https://img.shields.io/github/workflow/status/solidity-utilities/address-storage/test?event=push
 
-[build_travis_ci]:
-  https://travis-ci.com/github/solidity-utilities/library-mapping-address
+[activity_log__github_actions]:
+  https://github.com/solidity-utilities/address-storage/deployments/activity_log
 
 
 [truffle__package_management_via_npm]:
