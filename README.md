@@ -248,14 +248,18 @@ contract AccountStorage {
     /// @custom:throws {Error} `"AccountStorage.remove: Message sender not an owner"`
     /// @custom:throws {Error} `"LibraryMappingAddress.remove: value not defined"`
     function remove(address _key) public onlyOwner("remove") returns (Account) {
-        address _value = data.remove(_key);
-
-        uint256 _target_index = indexes[_key];
+        address _value = data.removeOrError(
+            _key,
+            "AccountStorage.remove: value not defined"
+        );
         uint256 _last_index = keys.length - 1;
         address _last_key = keys[_last_index];
-        keys[_target_index] = keys[_last_index];
-        indexes[_last_key] = _target_index;
-
+        if (keys.length > 1) {
+            uint256 _target_index = indexes[_key];
+            keys[_target_index] = keys[_last_index];
+            indexes[_last_key] = _target_index;
+        }
+        delete indexes[_last_key];
         keys.pop();
         return Account(_value);
     }

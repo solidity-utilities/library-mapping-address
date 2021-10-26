@@ -81,6 +81,19 @@ contract("test/examples/AccountStorage.sol", (accounts) => {
       from: owner_AccountStorage,
     });
 
+    try {
+      await instance.remove(owner_Account, {
+        from: owner_AccountStorage,
+      });
+    } catch (error) {
+      if (
+        error.reason === "AccountStorage.remove: value not defined"
+      ) {
+        return assert.isTrue(true, "Wat!?");
+      }
+      console.error({ error });
+    }
+
     const {
       words: [got_size],
     } = await instance.size();
