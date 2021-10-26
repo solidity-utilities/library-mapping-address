@@ -22,7 +22,7 @@ Solidity library for mapping addresses
 - [&#x1F9F0; Usage][heading__usage]
 
 - [&#x1F523; API][heading__api]
-  - [Library `LibraryMappingAddress`][heading__library_mappedaddresseslibrary]
+  - [Library `LibraryMappingAddress`][heading__library_librarymappingaddress]
     - [Method `get`][heading__method_get]
     - [Method `getOrElse`][heading__method_getorelse]
     - [Method `getOrError`][heading__method_getorerror]
@@ -317,8 +317,8 @@ JavaScript and Solidity usage examples
 
 
 ### Library `LibraryMappingAddress`
-[heading__library_mappedaddresseslibrary]:
-  #library-mappedaddresseslibrary
+[heading__library_librarymappingaddress]:
+  #library-librarymappingaddress
   "Organizes methods that may be attached to `mapping(address => address)` type"
 
 
