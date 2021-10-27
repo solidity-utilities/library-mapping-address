@@ -31,6 +31,10 @@
     "url": "https://github.com/solidity-utilities/library-mapping-address/issues"
   },
   "homepage": "https://github.com/solidity-utilities/library-mapping-address#readme",
+  "funding": {
+    "type": "individual",
+    "url": "https://liberapay.com/solidity-utilities/"
+  },
   "devDependencies": {
     "@truffle/hdwallet-provider": "^1.5.1",
     "ganache-cli": "^6.12.2",
