@@ -264,6 +264,16 @@ contract AccountStorage {
         return Account(_value);
     }
 
+    /// @notice Call `selfdestruct` with provided `address`
+    /// @param _to **{address}** Where to transfer any funds this contract has
+    /// @custom:throws **{Error}** `"AccountStorage.selfDestruct: message sender not an owner"`
+    function selfDestruct(address payable _to)
+        external
+        onlyOwner("selfDestruct")
+    {
+        selfdestruct(_to);
+    }
+
     /// @notice Convert `_value` for `LibraryMappingAddress.set`
     /// @param _key {address}
     /// @param _value {Account}

@@ -86,9 +86,7 @@ contract("test/examples/AccountStorage.sol", (accounts) => {
         from: owner_AccountStorage,
       });
     } catch (error) {
-      if (
-        error.reason === "AccountStorage.remove: value not defined"
-      ) {
+      if (error.reason === "AccountStorage.remove: value not defined") {
         return assert.isTrue(true, "Wat!?");
       }
       console.error({ error });
@@ -122,6 +120,30 @@ contract("test/examples/AccountStorage.sol", (accounts) => {
       console.error({ error });
     }
 
+    return assert.isTrue(false, "Failed to catch expected error reason");
+  });
+
+  //
+  it("AccountStorage.selfDestruct allowed from owner", async () => {
+    const instance = await AccountStorage.new(owner_AccountStorage);
+    await instance.selfDestruct(owner_AccountStorage, {
+      from: owner_AccountStorage,
+    });
+    return assert.isTrue(true, "Wat!?");
+  });
+
+  //
+  it("AccountStorage.selfDestruct disallowed from non-owner", async () => {
+    const instance = await AccountStorage.new(owner_AccountStorage);
+    return assert.isTrue(true, "Wat!?");
+    try {
+      await instance.selfDestruct(owner_AccountStorage, { from: owner_Account });
+    } catch (error) {
+      if (error.reason === "AccountStorage.selfDestruct: message sender not an owner") {
+        return assert.isTrue(true, "Wat!?");
+      }
+      console.error({ error });
+    }
     return assert.isTrue(false, "Failed to catch expected error reason");
   });
 
