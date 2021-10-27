@@ -1,6 +1,6 @@
 {
   "name": "@solidity-utilities/library-mapping-address",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Solidity library for mapping addresses",
   "main": "null",
   "directories": {
