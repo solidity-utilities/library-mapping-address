@@ -583,7 +583,7 @@ Error `_reason` to throw
 - `_reason` **{string}** Custom error message to throw if value `address` is _undefined_
 
 
-**Returns** -> {address} Stored value `address` for given key `address`
+**Returns** -> **{address}** Stored value `address` for given key `address`
 
 
 **Throws** -> **{Error}** `_reason` if value is _undefined_
@@ -916,7 +916,7 @@ For further details review full length version of
 
 
 [badge__github_actions]:
-  https://img.shields.io/github/workflow/status/solidity-utilities/address-storage/test?event=push
+  https://github.com/solidity-utilities/library-mapping-address/actions/workflows/test.yaml/badge.svg?branch=main
 
 [activity_log__github_actions]:
   https://github.com/solidity-utilities/address-storage/deployments/activity_log
