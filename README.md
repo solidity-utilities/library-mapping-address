@@ -40,6 +40,9 @@ Solidity library for mapping addresses
   - [:trident: Forking][heading__forking]
   - [:currency_exchange: Sponsor][heading__sponsor]
 
+- [&#x1f4dc; Change Log][heading__change_log]
+  - [Version `0.1.0`][heading__version_010]
+
 - [:card_index: Attribution][heading__attribution]
 
 - [:balance_scale: Licensing][heading__license]
@@ -374,10 +377,6 @@ JavaScript and Solidity usage examples
 **Throws** -> **{Error}** `"LibraryMappingAddress.get: value not defined"`
 
 
-**Developer note** -> Passes parameters to `getOrError` with default Error
-`_reason` to throw
-
-
 ---
 
 
@@ -491,10 +490,6 @@ JavaScript and Solidity usage examples
 **Throws** ->  **{Error}** `"LibraryMappingAddress.overwrite: value cannot be 0x0"`
 
 
-**Developer note** -> Passes parameters to `overwriteOrError` with default
-Error `_reason` to throw
-
-
 ---
 
 
@@ -554,10 +549,6 @@ Error `_reason` to throw
 **Throws** -> **{Error}** `"LibraryMappingAddress.remove: value not defined"`
 
 
-**Developer note** -> Passes parameters to `removeOrError` with default Error
-`_reason` to throw
-
-
 ---
 
 
@@ -614,11 +605,12 @@ Error `_reason` to throw
 - `_value` **{address}** Mapping value to set
 
 
-**Throws** -> **{Error}** `"LibraryMappingAddress.set: value already defined"`
+**Throws**
 
 
-**Developer note** -> Passes parameters to `setOrError` with default Error
-`_reason` to throw
+- **{Error}** `"LibraryMappingAddress.set: value already defined"`
+
+- **{Error}** `"LibraryMappingAddress.set: value cannot be 0x0"`
 
 
 ---
@@ -648,7 +640,12 @@ Error `_reason` to throw
 - `_reason` **{string}** Custom error message to present if value `address` is defined
 
 
-**Throws** -> **{Error}**  `_reason` if value is defined
+**Throws**
+
+
+- **{Error}**  `_reason` if value is defined
+
+- **{Error}** `"LibraryMappingAddress.setOrError: value cannot be 0x0"`
 
 
 ______
@@ -793,6 +790,50 @@ Regardless of if you're able to financially support projects such as
 `library-mapping-address` that `solidity-utilities` maintains, please consider
 sharing projects that are useful with others, because one of the goals of
 maintaining Open Source repositories is to provide value to the community.
+
+
+______
+
+
+## Change Log
+[heading__change_log]:
+  #change-log
+  "&#x1f4dc; Note, this section only documents breaking changes or major feature releases"
+
+
+> Note, this section only documents breaking changes or major feature releases
+
+
+---
+
+
+### Version `0.1.0`
+[heading__version_010]:
+  #version-010
+  "Make all functions `external` and prevent setting `0x0` values"
+
+
+> Make all functions `external` and prevent setting `0x0` values
+
+
+```bash
+git diff 'v0.1.0' 'v0.0.5'
+```
+
+
+**Developer notes**
+
+
+New error message will be reported if `overwrite`, `overwriteOrError`, `set`,
+or `setOrError` receive a `_value` of `0x0` to define. Please use `remove`,
+or `removeOrError`, to un-set a value. Note, for `overwriteOrError` and
+`setOrError`, this new error message is reported **after** `_reason` if the
+value _undefined_.
+
+
+The conversion of `public` to `external` type required duplication of code.
+This is a trade-off for reducing execution stack size, and possible gas fees,
+which comes at the cost of future development effort.
 
 
 ______
@@ -944,35 +985,35 @@ For further details review full length version of
   "Solidity code for LibraryMappingAddress.get function"
 
 [source__contracts__librarymappingaddress_sol__getorelse]:
-  contracts/LibraryMappingAddress.sol#L27
+  contracts/LibraryMappingAddress.sol#L26
   "Solidity code for LibraryMappingAddress.getOrElse function"
 
 [source__contracts__librarymappingaddress_sol__getorerror]:
-  contracts/LibraryMappingAddress.sol#L41
+  contracts/LibraryMappingAddress.sol#L40
   "Solidity code for LibraryMappingAddress.getOrError function"
 
 [source__contracts__librarymappingaddress_sol__has]:
-  contracts/LibraryMappingAddress.sol#L57
+  contracts/LibraryMappingAddress.sol#L56
   "Solidity code for LibraryMappingAddress.has function"
 
 [source__contracts__librarymappingaddress_sol__overwrite]:
-  contracts/LibraryMappingAddress.sol#L69
+  contracts/LibraryMappingAddress.sol#L68
   "Solidity code for LibraryMappingAddress.overwrite function"
 
 [source__contracts__librarymappingaddress_sol__overwriteorerror]:
-  contracts/LibraryMappingAddress.sol#L88
+  contracts/LibraryMappingAddress.sol#L85
   "Solidity code for LibraryMappingAddress.overwriteOrError function"
 
 [source__contracts__librarymappingaddress_sol__remove]:
-  contracts/LibraryMappingAddress.sol#L104
+  contracts/LibraryMappingAddress.sol#L101
   "Solidity code for LibraryMappingAddress.remove function"
 
 [source__contracts__librarymappingaddress_sol__removeorerror]:
-  contracts/LibraryMappingAddress.sol#L122
+  contracts/LibraryMappingAddress.sol#L119
   "Solidity code for LibraryMappingAddress.removeOrError function"
 
 [source__contracts__librarymappingaddress_sol__set]:
-  contracts/LibraryMappingAddress.sol#L139
+  contracts/LibraryMappingAddress.sol#L136
   "Solidity code for LibraryMappingAddress.set function"
 
 [source__contracts__librarymappingaddress_sol__setorerror]:
