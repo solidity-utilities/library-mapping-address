@@ -6,7 +6,6 @@ pragma solidity 0.8.7;
 /// @author S0AndS0
 library LibraryMappingAddress {
     /// @notice Retrieves stored value `address` or throws an error if _undefined_
-    /// @dev Passes parameters to `getOrError` with default Error `_reason` to throw
     /// @param _self **{mapping(address => address)}** Mapping of key/value `address` pairs
     /// @param _key **{address}** Mapping key `address` to lookup corresponding value `address` for
     /// @return **{address}** Value for given key `address`
@@ -16,12 +15,12 @@ library LibraryMappingAddress {
         view
         returns (address)
     {
-        return
-            getOrError(
-                _self,
-                _key,
-                "LibraryMappingAddress.get: value not defined"
-            );
+        address _value = _self[_key];
+        require(
+            _value != address(0x0),
+            "LibraryMappingAddress.get: value not defined"
+        );
+        return _value;
     }
 
     /// @notice Retrieves stored value `address` or provided default `address` if _undefined_
@@ -48,7 +47,7 @@ library LibraryMappingAddress {
         mapping(address => address) storage _self,
         address _key,
         string memory _reason
-    ) public view returns (address) {
+    ) external view returns (address) {
         address _value = _self[_key];
         require(_value != address(0x0), _reason);
         return _value;
@@ -67,7 +66,6 @@ library LibraryMappingAddress {
     }
 
     /// @notice Store `_value` under given `_key` **without** preventing unintentional overwrites
-    /// @dev Passes parameters to `overwriteOrError` with default Error `_reason` to throw
     /// @param _self **{mapping(address => address)}** Mapping of key/value `address` pairs
     /// @param _key **{address}** Mapping key to set corresponding value `address` for
     /// @param _value **{address}** Mapping value to set
@@ -77,12 +75,11 @@ library LibraryMappingAddress {
         address _key,
         address _value
     ) external {
-        overwriteOrError(
-            _self,
-            _key,
-            _value,
+        require(
+            _value != address(0x0),
             "LibraryMappingAddress.overwrite: value cannot be 0x0"
         );
+        _self[_key] = _value;
     }
 
     /// @notice Store `_value` under given `_key` **without** preventing unintentional overwrites
@@ -96,13 +93,12 @@ library LibraryMappingAddress {
         address _key,
         address _value,
         string memory _reason
-    ) public {
+    ) external {
         require(_value != address(0x0), _reason);
         _self[_key] = _value;
     }
 
     /// @notice Delete value `address` for given `_key`
-    /// @dev Passes parameters to `removeOrError` with default Error `_reason` to throw
     /// @param _self **{mapping(address => address)}** Mapping of key/value `address` pairs
     /// @param _key **{address}** Mapping key to delete corresponding value `address` for
     /// @return **{address}** Stored value `address` for given key `address`
@@ -111,12 +107,13 @@ library LibraryMappingAddress {
         external
         returns (address)
     {
-        return
-            removeOrError(
-                _self,
-                _key,
-                "LibraryMappingAddress.remove: value not defined"
-            );
+        address _value = _self[_key];
+        require(
+            _value != address(0x0),
+            "LibraryMappingAddress.remove: value not defined"
+        );
+        delete _self[_key];
+        return _value;
     }
 
     /// @notice Delete value `address` for given `_key`
@@ -129,7 +126,7 @@ library LibraryMappingAddress {
         mapping(address => address) storage _self,
         address _key,
         string memory _reason
-    ) public returns (address) {
+    ) external returns (address) {
         address _value = _self[_key];
         require(_value != address(0x0), _reason);
         delete _self[_key];
@@ -137,22 +134,25 @@ library LibraryMappingAddress {
     }
 
     /// @notice Store `_value` under given `_key` while preventing unintentional overwrites
-    /// @dev Passes parameters to `setOrError` with default Error `_reason` to throw
     /// @param _self **{mapping(address => address)}** Mapping of key/value `address` pairs
     /// @param _key **{address}** Mapping key to set corresponding value `address` for
     /// @param _value **{address}** Mapping value to set
     /// @custom:throws **{Error}** `"LibraryMappingAddress.set: value already defined"`
+    /// @custom:throws **{Error}** `"LibraryMappingAddress.set: value cannot be 0x0"`
     function set(
         mapping(address => address) storage _self,
         address _key,
         address _value
     ) external {
-        setOrError(
-            _self,
-            _key,
-            _value,
+        require(
+            _self[_key] == address(0x0),
             "LibraryMappingAddress.set: value already defined"
         );
+        require(
+            _value != address(0x0),
+            "LibraryMappingAddress.set: value cannot be 0x0"
+        );
+        _self[_key] = _value;
     }
 
     /// @notice Store `_value` under given `_key` while preventing unintentional overwrites
@@ -161,13 +161,18 @@ library LibraryMappingAddress {
     /// @param _value **{address}** Mapping value to set
     /// @param _reason **{string}** Custom error message to present if value `address` is defined
     /// @custom:throws **{Error}** _reason if value is defined
+    /// @custom:throws **{Error}** `"LibraryMappingAddress.setOrError: value cannot be 0x0"`
     function setOrError(
         mapping(address => address) storage _self,
         address _key,
         address _value,
         string memory _reason
-    ) public {
+    ) external {
         require(_self[_key] == address(0x0), _reason);
+        require(
+            _value != address(0x0),
+            "LibraryMappingAddress.setOrError: value cannot be 0x0"
+        );
         _self[_key] = _value;
     }
 }
