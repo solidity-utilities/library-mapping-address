@@ -48,7 +48,7 @@ if (fs.existsSync(ethpm_file)) {
     HDWalletProvider = require("@truffle/hdwallet-provider");
     ethpm = require(`${path.join(os.homedir(), ".ethpm.json")}`);
   } catch (error) {
-    console.warn('Warning: ignored ->', error.message);
+    console.warn("Warning: ignored ->", error.message);
   }
 }
 
@@ -175,4 +175,5 @@ module.exports = {
   //   }
   // }
   // }
+  plugins: ["truffle-contract-size"],
 };
